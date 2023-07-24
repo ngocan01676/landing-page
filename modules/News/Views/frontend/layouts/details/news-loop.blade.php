@@ -1,0 +1,79 @@
+@foreach($rows as $row)
+    @php
+        $translation = $row->translateOrOrigin(app()->getLocale()); @endphp
+    <div class="post_item col-md-4">
+        <div class="header">
+            @if($image_tag = get_image_tag($row->image_id,'full'))
+                <header class="post-header">
+                    <a href="{{$row->getDetailUrl()}}">
+                        {!! $image_tag !!}
+                    </a>
+                </header>
+                <!-- <div class="cate">
+                    @php $category = $row->getCategory; @endphp
+                    @if(!empty($category))
+                        @php $t = $category->translateOrOrigin(app()->getLocale()); @endphp
+                        <ul>
+                            <li>
+                                <a href="{{$category->getDetailUrl(app()->getLocale())}}">
+                                    {{$t->name ?? ''}}
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
+                </div> -->
+            @endif
+            <div class="post-inner">
+                <?php
+                    $tags = \Modules\News\Models\News::find($row->id)->getTags();
+
+                ?>
+                <h4 class="post-title">
+                    <a href="{{$row->getDetailUrl()}}">
+                        <span> {{$translation->title}}</span>
+                    </a>
+                </h4>
+                <h4 class="post-sub-title">
+                    <a href="{{$row->getDetailUrl()}}">
+                        <span> {{$row->sub_title}}</span>
+                    </a>
+                </h4>
+                <div class="tag-list">
+                    @php $number = 0; @endphp
+                    @foreach($tags as $tag)
+                    <div class="item @if($number == 0)special-item @endif">
+                        <?php $icon = get_file_url($tag->image_id, 'full'); ?>
+                        @if($icon)
+                            <img src="{{$icon}}" alt="no-icon" />
+                        @endif
+                        <span class="d-block text-truncate">{{$tag->name}}</span>
+                    </div>
+                    @if ($number == 5)
+                        @break
+                    @endif
+                    @php $number++; @endphp
+                    @endforeach
+                </div>
+                <!-- <div class="post-info">
+                    <ul>
+                        @if(!empty($row->getAuthor))
+                            <li>
+                                @if($avatar_url = $row->getAuthor->getAvatarUrl())
+                                    <img class="avatar" src="{{$avatar_url}}" alt="{{$row->getAuthor->getDisplayName()}}">
+                                @else
+                                    <span class="avatar-text">{{ucfirst($row->getAuthor->getDisplayName()[0])}}</span>
+                                @endif
+                                <span> {{ __('BY ')}} </span>
+                                {{$row->getAuthor->getDisplayName() ?? ''}}
+                            </li>
+                        @endif
+                        <li> {{__('DATE ')}}  {{ display_date($row->updated_at)}}  </li>
+                    </ul>
+                </div> -->
+                <!-- <div class="post-desciption">
+                    {!! get_exceprt($translation->content) !!}
+                </div> -->
+            </div>
+        </div>
+    </div>
+@endforeach

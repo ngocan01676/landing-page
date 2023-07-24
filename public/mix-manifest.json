@@ -1,0 +1,16 @@
+{
+    "/css/app.css": "/css/app.css",
+    "/css/contact.css": "/css/contact.css",
+    "/module/user/css/user.css": "/module/user/css/user.css",
+    "/module/user/css/profile.css": "/module/user/css/profile.css",
+    "/module/news/css/news.css": "/module/news/css/news.css",
+    "/module/list-jobs/css/list-jobs.css": "/module/list-jobs/css/list-jobs.css",
+    "/module/core/css/home.css": "/module/core/css/home.css",
+    "/module/core/css/custom-style.css": "/module/core/css/custom-style.css",
+    "/module/core/css/headerBanner.css": "/module/core/css/headerBanner.css",
+    "/module/core/css/projects-list.css": "/module/core/css/projects-list.css",
+    "/module/core/css/projects-list-details.css": "/module/core/css/projects-list-details.css",
+    "/module/core/css/paging.css": "/module/core/css/paging.css",
+    "/css/notfound.css": "/css/notfound.css",
+    "/module/media/css/browser.css": "/module/media/css/browser.css"
+}
